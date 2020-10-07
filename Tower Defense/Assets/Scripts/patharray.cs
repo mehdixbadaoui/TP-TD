@@ -6,7 +6,7 @@ public class patharray : MonoBehaviour
 {
     public static Transform[] targets;
 
-    void Start(){
+    void Awake(){
         targets = new Transform[transform.childCount];
         for (int i = 0; i < targets.Length; i++)
         {
@@ -15,6 +15,9 @@ public class patharray : MonoBehaviour
 
         // Debug.Log("patharray" + targets.Length);
 
+    }
+    void Start(){
+        // Debug.Log(targets.Length);
     }
 
 }

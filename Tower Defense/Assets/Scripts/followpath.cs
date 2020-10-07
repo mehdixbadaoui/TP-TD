@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class followpath : MonoBehaviour
 {
-    private Transform[] targets;
+    private Transform[] targets2;
     public float speed = 5f;
     int next;
     int end; 
@@ -12,20 +12,21 @@ public class followpath : MonoBehaviour
     void Start()
     {
         next = 0;
-        targets = patharray.targets;
-        end = targets.Length;
+        targets2 = patharray.targets;
+        // Debug.Log("length " + targets.Length);
+        end = targets2.Length;
     }
     void Update()
     {   
         float step =  speed * Time.deltaTime;
-        Transform target = targets[next];
-        if(transform.position != targets[end -1].position){
+        Transform target = targets2[next];
+        if(transform.position != targets2[end -1].position){
             transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-            if(transform.position == targets[next].position && targets[next]!= targets[end -1]){
+            if(transform.position == targets2[next].position && targets2[next]!= targets2[end -1]){
                 next++;
             }
         }
-        Debug.Log(next);
+        // Debug.Log(next);
 
 
     }
