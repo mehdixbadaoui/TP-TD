@@ -9,6 +9,6 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        Instantiate(prefab, spawn.position, spawn.rotation);
+        // Instantiate(prefab, spawn.position, spawn.rotation);
     }
 }

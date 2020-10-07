@@ -16,6 +16,7 @@ public class followpath : MonoBehaviour
         // Debug.Log("length " + targets.Length);
         end = targets2.Length;
     }
+    //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     void Update()
     {   
         float step =  speed * Time.deltaTime;
