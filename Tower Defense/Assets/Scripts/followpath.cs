@@ -15,6 +15,7 @@ public class followpath : MonoBehaviour
         targets = patharray.targets;
         end = targets.Length;
     }
+    //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     void Update()
     {   
         float step =  speed * Time.deltaTime;
