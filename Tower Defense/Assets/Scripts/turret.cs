@@ -26,7 +26,7 @@ public class turret : MonoBehaviour
         Quaternion aim = Quaternion.LookRotation(dir);
         // Vector3 rotation = aim.eulerAngles;
         Vector3 rotation = Quaternion.Lerp(toRotate.rotation, aim, Time.deltaTime * turnSpeed).eulerAngles;
-        toRotate.rotation = Quaternion.Euler(rotation);
+        toRotate.rotation = Quaternion.Euler(90f, rotation.y, 0f);
     }
     
     void updateTarget(){
