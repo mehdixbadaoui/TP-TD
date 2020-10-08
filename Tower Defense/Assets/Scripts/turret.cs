@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class turret : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
     public float range = 2f;
+    public float turnSpeed = 10f;
+
+
+    public Transform toRotate;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +20,13 @@ public class turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (target == null) return;
+
+        Vector3 dir = target.position - transform.position;
+        Quaternion aim = Quaternion.LookRotation(dir);
+        // Vector3 rotation = aim.eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(toRotate.rotation, aim, Time.deltaTime * turnSpeed).eulerAngles;
+        toRotate.rotation = Quaternion.Euler(rotation);
     }
     
     void updateTarget(){
@@ -26,6 +36,7 @@ public class turret : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             float enemy_dist = Vector3.Distance(transform.position, enemy.transform.position);
+            
             if(enemy_dist < shortestDistance){
                 closestEnemy = enemy;
                 shortestDistance = enemy_dist;
