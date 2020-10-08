@@ -5,11 +5,16 @@ using UnityEngine;
 public class turret : MonoBehaviour
 {
     private Transform target;
-    public float range = 2f;
+
+    public float range = 5f;
     public float turnSpeed = 10f;
+    public float rate = 2f;
 
-
+    private float countdown = 0f; 
     public Transform toRotate;
+
+    public GameObject bulletPrefab;
+    public Transform firefrom;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,15 @@ public class turret : MonoBehaviour
         // Vector3 rotation = aim.eulerAngles;
         Vector3 rotation = Quaternion.Lerp(toRotate.rotation, aim, Time.deltaTime * turnSpeed).eulerAngles;
         toRotate.rotation = Quaternion.Euler(90f, rotation.y, 0f);
+
+        //FIRING
+        if(countdown <= 0f){
+            shoot();
+            countdown = 1f/rate;
+        }
+
+        countdown -= Time.deltaTime;
+
     }
     
     void updateTarget(){
@@ -49,6 +63,12 @@ public class turret : MonoBehaviour
         else{
             target = null;
         }
+    }
+
+    void shoot(){
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firefrom.position, firefrom.rotation);
+        bullet b = bulletGO.GetComponent<bullet>();
+        if(b != null) b.findTarget(target);
     }
 
     void OnDrawGizmosSelected(){
