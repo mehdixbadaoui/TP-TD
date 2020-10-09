@@ -111,3 +111,5 @@ MonoBehaviour:
   hover_color_good: {r: 0, g: 1, b: 0.59133935, a: 0}
   hover_color_bad: {r: 1, g: 0.2216981, b: 0.34137943, a: 0}
   base_color: {r: 1, g: 1, b: 1, a: 0}
+
+  m_IsTrigger: 0
