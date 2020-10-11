@@ -27,6 +27,10 @@ public class followpath : MonoBehaviour
                 next++;
             }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
         // Debug.Log(next);
 
 

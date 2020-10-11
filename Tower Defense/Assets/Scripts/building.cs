@@ -9,18 +9,23 @@ public class building : MonoBehaviour
     void Awake(){
         instance = this;
     }
-
+    
     public GameObject turret1;
+    public GameObject turret2;
 
+    private GameObject turretToBuild;
 
-    // Start is called before the first frame update
-    private GameObject toBuild;
     public GameObject getToBuild(){
-        return toBuild;
+
+        return turretToBuild;
+    }
+
+    public void setToBuild(GameObject t){
+        turretToBuild = t;
     }
     void Start()
     {
-        toBuild = turret1;
+        turretToBuild = turret1;
     }
 
     // Update is called once per frame

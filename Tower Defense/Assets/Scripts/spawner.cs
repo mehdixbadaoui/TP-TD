@@ -21,7 +21,7 @@ public class spawner : MonoBehaviour
     }
 
     IEnumerator spanWave(){
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 1; i++)
         {
             Instantiate(prefab, spawn.position, spawn.rotation);
             yield return new WaitForSeconds(0.3f);

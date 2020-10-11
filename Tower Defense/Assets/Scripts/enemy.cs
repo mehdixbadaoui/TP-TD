@@ -20,7 +20,10 @@ public class enemy : MonoBehaviour
         }
     }
 
-    public void takeDamage(){
-        health -= 10f;
+    public void takeDamage(float d){
+        health -= d;
+        if(health <= 0){
+            Destroy(gameObject);
+        }
     }
 }
