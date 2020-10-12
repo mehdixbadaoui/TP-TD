@@ -36,7 +36,9 @@ public class bullet : MonoBehaviour
 
     public void findTarget(Transform t){
         target = t;
-        Debug.Log("we have target");
+        if(target) Debug.Log("we have target");
+
+
     }
 
     void hitTarget(){
@@ -53,7 +55,7 @@ public class bullet : MonoBehaviour
 			e.takeDamage(100);
 		}
         else{
-            // Debug.Log("nulllllllllll");
+            Debug.Log("nulllllllllll");
         }
     }
 
