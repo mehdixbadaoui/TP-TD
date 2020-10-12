@@ -11141,9 +11141,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049586713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baf7d125cf9cb9b4fb9bbc6e70b3d6fa, type: 3}
+  m_Script: {fileID: 11500000, guid: b1d6ea9f669557440b35f7e66cddaa2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret1: {fileID: 695448831711930740, guid: 91b74ea8fa0ef1a458aa40307213cca3, type: 3}
+  turret2: {fileID: 0}
 --- !u!4 &1051216063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4205043940757855478, guid: 942b3d50724616a41b3a016dbf76e9bf,
@@ -15946,6 +15948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: turret
       objectReference: {fileID: 0}
+    - target: {fileID: 695448831711930740, guid: 91b74ea8fa0ef1a458aa40307213cca3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 695448831711930746, guid: 91b74ea8fa0ef1a458aa40307213cca3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16055,6 +16062,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146474908446079141, guid: 91b74ea8fa0ef1a458aa40307213cca3,
+        type: 3}
+      propertyPath: rate
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b74ea8fa0ef1a458aa40307213cca3, type: 3}
