@@ -10,7 +10,7 @@ public class turret : MonoBehaviour
     public float turnSpeed = 10f;
     public float rate = 2f;
 
-    private float countdown = 0f; 
+    private float countdown = 0f;
     public Transform toRotate;
 
     public GameObject bulletPrefab;
@@ -34,44 +34,51 @@ public class turret : MonoBehaviour
         toRotate.rotation = Quaternion.Euler(90f, rotation.y, 0f);
 
         //FIRING
-        if(countdown <= 0f){
+        if (countdown <= 0f)
+        {
             shoot();
-            countdown = 1f/rate;
+            countdown = 1f / rate;
         }
 
         countdown -= Time.deltaTime;
 
     }
-    
-    void updateTarget(){
+
+    void updateTarget()
+    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
         float shortestDistance = Mathf.Infinity;
         foreach (GameObject enemy in enemies)
         {
             float enemy_dist = Vector3.Distance(transform.position, enemy.transform.position);
-            
-            if(enemy_dist < shortestDistance){
+
+            if (enemy_dist < shortestDistance)
+            {
                 closestEnemy = enemy;
                 shortestDistance = enemy_dist;
             }
         }
 
-        if(closestEnemy != null && shortestDistance <= range){
+        if (closestEnemy != null && shortestDistance <= range)
+        {
             target = closestEnemy.transform;
         }
-        else{
+        else
+        {
             target = null;
         }
     }
 
-    void shoot(){
+    void shoot()
+    {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firefrom.position, firefrom.rotation);
         bullet b = bulletGO.GetComponent<bullet>();
-        if(b != null) b.findTarget(target);
+        if (b != null) b.findTarget(target);
     }
 
-    void OnDrawGizmosSelected(){
+    void OnDrawGizmosSelected()
+    {
         Gizmos.DrawWireSphere(transform.position, range);
     }
 }

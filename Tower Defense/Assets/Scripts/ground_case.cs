@@ -5,6 +5,7 @@ using UnityEngine;
 public class ground_case : MonoBehaviour
 {
     public Transform prefab;
+    GameObject  turret;
     public bool buildable = true;
     public Color hover_color_good;
     public Color hover_color_bad;
@@ -26,7 +27,10 @@ public class ground_case : MonoBehaviour
     }
     void OnMouseDown(){
         if(buildable){
-            Instantiate(prefab, transform.position, transform.rotation);
+
+            GameObject turretToBuild = building.instance.getToBuild();
+            turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+            buildable = false;
 
         }
         

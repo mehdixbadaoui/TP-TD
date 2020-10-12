@@ -36,10 +36,25 @@ public class bullet : MonoBehaviour
 
     public void findTarget(Transform t){
         target = t;
+        Debug.Log("we have target");
     }
 
     void hitTarget(){
+        damage(target);
         Destroy(gameObject);
+    }
+
+    void damage(Transform t){
+        enemy e = t.GetComponent<enemy>();
+
+		if (e != null)
+		{   
+            Debug.Log("damage is done");
+			e.takeDamage(100);
+		}
+        else{
+            // Debug.Log("nulllllllllll");
+        }
     }
 
 }
