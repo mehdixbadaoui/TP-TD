@@ -42,14 +42,18 @@ public class bullet : MonoBehaviour
     }
 
     void hitTarget(){
-        damage(target);
+        if (target)
+        {
+            //damage(target);
+            Debug.Log("can damage");
+        }
         Destroy(gameObject);
     }
 
     void damage(Transform t){
         enemy e = t.GetComponent<enemy>();
 
-		if (e != null)
+		if (e)
 		{   
             Debug.Log("damage is done");
 			e.takeDamage(100);

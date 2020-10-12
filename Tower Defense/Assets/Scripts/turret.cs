@@ -25,7 +25,7 @@ public class turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;
+        if (!target) return;
 
         Vector3 dir = target.position - transform.position;
         Quaternion aim = Quaternion.LookRotation(dir);
@@ -37,6 +37,7 @@ public class turret : MonoBehaviour
         if (countdown <= 0f)
         {
             shoot();
+            damage(target);
             countdown = 1f / rate;
         }
 
@@ -74,11 +75,27 @@ public class turret : MonoBehaviour
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firefrom.position, firefrom.rotation);
         bullet b = bulletGO.GetComponent<bullet>();
-        if (b != null) b.findTarget(target);
+        if (!b) b.findTarget(target);
+
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    void damage(Transform t)
+    {
+        enemy e = t.GetComponent<enemy>();
+        if (e)
+        {
+            Debug.Log("damage is done");
+            e.takeDamage(100);
+        }
+        else
+        {
+            Debug.Log("nulllllllllll");
+        }
+
     }
 }
