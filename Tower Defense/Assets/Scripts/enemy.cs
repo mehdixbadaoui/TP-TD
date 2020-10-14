@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
-    private float health = 100f;
+    private float health;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 100f;
     }
 
     // Update is called once per frame

@@ -5,6 +5,7 @@ using UnityEngine;
 public class turret : MonoBehaviour
 {
     private Transform target;
+    private GameObject targetGO;
 
     public float range = 5f;
     public float turnSpeed = 10f;
@@ -37,7 +38,6 @@ public class turret : MonoBehaviour
         if (countdown <= 0f)
         {
             shoot();
-            damage(target);
             countdown = 1f / rate;
         }
 
@@ -64,6 +64,7 @@ public class turret : MonoBehaviour
         if (closestEnemy != null && shortestDistance <= range)
         {
             target = closestEnemy.transform;
+            targetGO = closestEnemy;
         }
         else
         {
@@ -75,7 +76,7 @@ public class turret : MonoBehaviour
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firefrom.position, firefrom.rotation);
         bullet b = bulletGO.GetComponent<bullet>();
-        if (!b) b.findTarget(target);
+        if (b) b.findTarget(target);
 
     }
 
@@ -84,18 +85,4 @@ public class turret : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    void damage(Transform t)
-    {
-        enemy e = t.GetComponent<enemy>();
-        if (e)
-        {
-            Debug.Log("damage is done");
-            e.takeDamage(100);
-        }
-        else
-        {
-            Debug.Log("nulllllllllll");
-        }
-
-    }
 }
