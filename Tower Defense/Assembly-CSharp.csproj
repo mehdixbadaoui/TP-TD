@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\ground_case.cs" />
     <Compile Include="Assets\Scripts\manager.cs" />
     <Compile Include="Assets\Scripts\patharray.cs" />
+    <Compile Include="Assets\Scripts\slowing.cs" />
     <Compile Include="Assets\Scripts\spawner.cs" />
     <Compile Include="Assets\Scripts\turret.cs" />
     <Reference Include="UnityEngine">

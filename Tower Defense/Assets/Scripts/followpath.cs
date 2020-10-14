@@ -19,7 +19,7 @@ public class followpath : MonoBehaviour
     //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     void Update()
     {   
-        float step =  speed * Time.deltaTime;
+        float step =  gameObject.GetComponent<enemy>().getCurrentSpeed() * Time.deltaTime;
         Transform target = targets2[next];
         if(transform.position != targets2[end -1].position){
             transform.position = Vector3.MoveTowards(transform.position, target.position, step);

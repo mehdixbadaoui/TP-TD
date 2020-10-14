@@ -23,7 +23,7 @@ public class spawner : MonoBehaviour
     IEnumerator spanWave(){
         for (int i = 0; i < 1; i++)
         {
-            Instantiate(prefab, spawn.position, spawn.rotation);
+            Instantiate(prefab, new Vector3(1, 1, 1), spawn.rotation);
             yield return new WaitForSeconds(0.3f);
         }
     }
