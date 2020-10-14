@@ -29,7 +29,7 @@ public class ground_case : MonoBehaviour
         if(buildable){
 
             GameObject turretToBuild = manager.instance.getToBuild();
-            turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+            turret = (GameObject)Instantiate(turretToBuild, transform.position + new Vector3(0, 1, 0), transform.rotation);
             buildable = false;
 
         }
