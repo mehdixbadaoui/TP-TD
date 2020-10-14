@@ -10,13 +10,18 @@ public class slowing : MonoBehaviour
     void Start()
     {
         //range = 5;
-        InvokeRepeating("updateTarget", 0f, 0.5f);
+        //InvokeRepeating("updateTarget", 0f, 0.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        Debug.Log("collision");
     }
 
     void updateTarget()
@@ -27,13 +32,14 @@ public class slowing : MonoBehaviour
             float enemy_dist = Vector3.Distance(transform.position, enemy.transform.position);
 
             //if (e) Debug.Log("enemy");
-            enemy e = enemy.GetComponent<enemy>();
             if (enemy_dist < range)
             {
+                enemy e = enemy.GetComponent<enemy>();
                 e.setSpeed(e.getBaseSpeed() / 2);
             }
             else
             {
+                enemy e = enemy.GetComponent<enemy>();
                 e.setSpeed(e.getBaseSpeed());
 
             }
