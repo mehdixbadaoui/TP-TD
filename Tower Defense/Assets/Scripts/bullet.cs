@@ -43,7 +43,6 @@ public class bullet : MonoBehaviour
         if (t)
         {
             damage(t);
-            Debug.Log(t);
         }
         Destroy(gameObject);
     }

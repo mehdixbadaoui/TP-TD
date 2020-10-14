@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {
     private float health;
+    private int butin = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class enemy : MonoBehaviour
         health -= d;
         if(health <= 0){
             Destroy(gameObject);
+            manager.instance.gainStonks(butin);
         }
     }
 }

@@ -28,7 +28,7 @@ public class ground_case : MonoBehaviour
     void OnMouseDown(){
         if(buildable){
 
-            GameObject turretToBuild = building.instance.getToBuild();
+            GameObject turretToBuild = manager.instance.getToBuild();
             turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
             buildable = false;
 
