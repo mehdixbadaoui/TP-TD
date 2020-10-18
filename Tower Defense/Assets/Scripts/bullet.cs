@@ -7,6 +7,7 @@ public class bullet : MonoBehaviour
     private Transform target;
 
     public float speed = 100f;
+    enemy e;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null){
+        if (!target){
             Destroy(gameObject);
             return;
         }
@@ -26,7 +27,7 @@ public class bullet : MonoBehaviour
         float distancePerFrame = speed * Time.deltaTime;
 
         if(dir.magnitude <= distancePerFrame){
-            hitTarget();
+            hitTarget(target);
             return;
         }
 
@@ -36,24 +37,22 @@ public class bullet : MonoBehaviour
 
     public void findTarget(Transform t){
         target = t;
-        Debug.Log("we have target");
     }
 
-    void hitTarget(){
-        damage(target);
+    void hitTarget(Transform t){
+        if (t)
+        {
+            damage(t);
+        }
         Destroy(gameObject);
     }
 
     void damage(Transform t){
-        enemy e = t.GetComponent<enemy>();
 
-		if (e != null)
-		{   
-            Debug.Log("damage is done");
-			e.takeDamage(100);
-		}
-        else{
-            // Debug.Log("nulllllllllll");
+        enemy e = t.gameObject.GetComponent<enemy>();
+        if (e)
+        {
+            e.takeDamage(10);
         }
     }
 

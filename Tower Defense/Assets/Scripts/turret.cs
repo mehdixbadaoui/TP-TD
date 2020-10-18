@@ -5,6 +5,7 @@ using UnityEngine;
 public class turret : MonoBehaviour
 {
     private Transform target;
+    private GameObject targetGO;
 
     public float range = 5f;
     public float turnSpeed = 10f;
@@ -25,7 +26,7 @@ public class turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;
+        if (!target) return;
 
         Vector3 dir = target.position - transform.position;
         Quaternion aim = Quaternion.LookRotation(dir);
@@ -63,6 +64,7 @@ public class turret : MonoBehaviour
         if (closestEnemy != null && shortestDistance <= range)
         {
             target = closestEnemy.transform;
+            targetGO = closestEnemy;
         }
         else
         {
@@ -74,11 +76,13 @@ public class turret : MonoBehaviour
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firefrom.position, firefrom.rotation);
         bullet b = bulletGO.GetComponent<bullet>();
-        if (b != null) b.findTarget(target);
+        if (b) b.findTarget(target);
+
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
 }
