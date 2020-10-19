@@ -4,24 +4,31 @@ using UnityEngine;
 
 public class slowing : MonoBehaviour
 {
-    public float range = 0f;
+    public float range = 5f;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         //range = 5;
         //InvokeRepeating("updateTarget", 0f, 0.5f);
+        Debug.Log(rb.IsSleeping());
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void OnCollisionStay(Collision collisionInfo)
-    {
-        Debug.Log("collision");
+        Collider[] affected = Physics.OverlapSphere(rb.position, range);
+        foreach (var obj in affected)
+        {   
+            if(obj.gameObject.name == "Enemy(Clone)")
+            {
+                enemy e = obj.GetComponent<enemy>();
+                e.setSpeed(e.getBaseSpeed() / 2);
+            }
+        }
     }
 
     void updateTarget()

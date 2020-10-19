@@ -8,10 +8,13 @@ public class enemy : MonoBehaviour
     private float current_speed;
     private float base_speed = 5f;
     private int butin = 100;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        if (rb.IsSleeping()) rb.WakeUp();
         health = 100f;
         current_speed = base_speed;
     }
@@ -46,5 +49,11 @@ public class enemy : MonoBehaviour
     {
         return current_speed;
     }
+
+    void OnCollisionStay(Collision collisionInfo)
+    {
+        Debug.Log("collision");
+    }
+
 
 }
