@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class slowing : MonoBehaviour
 {
-    public float range = 5f;
+    public float range;
     private Rigidbody rb;
 
     // Start is called before the first frame update
@@ -13,23 +13,36 @@ public class slowing : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         //range = 5;
         //InvokeRepeating("updateTarget", 0f, 0.5f);
-        Debug.Log(rb.IsSleeping());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Collider[] affected = Physics.OverlapSphere(rb.position, range);
-        foreach (var obj in affected)
-        {   
-            if(obj.gameObject.name == "Enemy(Clone)")
-            {
-                enemy e = obj.GetComponent<enemy>();
-                e.setSpeed(e.getBaseSpeed() / 2);
-            }
-        }
+        //Collider[] affected = Physics.OverlapSphere(rb.position, range);
+        //foreach (var obj in affected)
+        //{   
+        //    enemy e = obj.GetComponent<enemy>();
+        //    if(obj.gameObject.name == "Enemy(Clone)")
+        //    {
+        //        e.incSlowEffect();
+        //        e.setSpeed(e.getBaseSpeed() / 2);
+        //    }
+        //}
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        
+    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if(other.tag == "Enemy")
+    //    {
+    //        Debug.Log("collision");
+
+    //    }
+    //}
 
     void updateTarget()
     {

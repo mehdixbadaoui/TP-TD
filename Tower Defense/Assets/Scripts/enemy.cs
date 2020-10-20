@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class enemy : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class enemy : MonoBehaviour
     private float current_speed;
     private float base_speed = 5f;
     private int butin = 100;
+    private int sloweffect;
     private Rigidbody rb;
+    List<GameObject> close_turrets;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,7 @@ public class enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb.IsSleeping()) rb.WakeUp();
         health = 100f;
+        sloweffect = 0;
         current_speed = base_speed;
     }
 
@@ -25,6 +29,20 @@ public class enemy : MonoBehaviour
         if(health <= 0){
             Destroy(gameObject);
         }
+
+        close_turrets = new List<GameObject>();
+        GameObject[] slowturrets = GameObject.FindGameObjectsWithTag("slowing");
+        foreach (GameObject turret in slowturrets)
+        {
+            float distance = (transform.position - turret.transform.position).magnitude;
+            if (distance < turret.GetComponent<slowing>().range)
+            {
+                close_turrets.Add(turret);
+            }
+        }
+
+        if (close_turrets.Count != 0) setSpeed(base_speed / (2 * close_turrets.Count));
+        else setSpeed(base_speed);
     }
 
     public void takeDamage(float d){
@@ -50,9 +68,15 @@ public class enemy : MonoBehaviour
         return current_speed;
     }
 
-    void OnCollisionStay(Collision collisionInfo)
+    
+    public void incSlowEffect()
     {
-        Debug.Log("collision");
+        sloweffect++;
+    }
+     
+    public int getSlowEffect()
+    {
+        return sloweffect;
     }
 
 
