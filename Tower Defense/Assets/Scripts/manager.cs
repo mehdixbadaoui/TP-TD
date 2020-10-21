@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class manager : MonoBehaviour
 {
     public static manager instance;
-    private static int stonks;
     private Text stonks_text;
     private Text lives_text;
+    public Text hess;
+
+    private static int stonks;
     private int lives;
+
 
     public bool game_lost;
     void Awake()
@@ -49,6 +52,9 @@ public class manager : MonoBehaviour
         stonks_text.text = stonks.ToString();
         lives_text = GameObject.Find("lives").GetComponent<Text>();
         lives_text.text = lives.ToString();
+        hess = GameObject.Find("hess").GetComponent<Text>();
+        hess.enabled = false;
+
         game_lost = false;
     }
 
