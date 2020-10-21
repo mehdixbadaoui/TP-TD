@@ -5,7 +5,6 @@ using UnityEngine;
 public class followpath : MonoBehaviour
 {
     private Transform[] targets2;
-    public float speed = 5f;
     int next;
     int end; 
     // Update is called once per frame

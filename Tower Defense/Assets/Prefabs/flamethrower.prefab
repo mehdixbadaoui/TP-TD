@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513776140941140772}
   - component: {fileID: 1513776140941140775}
+  - component: {fileID: 2877139781559968690}
   m_Layer: 0
   m_Name: flamethrower
   m_TagString: Untagged
@@ -163,6 +164,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 9197749624273328362, guid: 8cc9c2e7891bd924ab302e04b838db4f,
     type: 3}
   firefrom: {fileID: 1513776140950078819}
+--- !u!114 &2877139781559968690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513776140941140774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 723fa50f28d215244823ed0517206c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1513776140950078818
 GameObject:
   m_ObjectHideFlags: 0
