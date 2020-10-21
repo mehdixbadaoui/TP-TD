@@ -10,6 +10,8 @@ public class ground_case : MonoBehaviour
     public Color hover_color_good;
     public Color hover_color_bad;
     public Color base_color;
+
+    float countdown;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,8 @@ public class ground_case : MonoBehaviour
             GetComponent<Renderer>().material.color = hover_color_bad;
         }
     }
-    void OnMouseDown(){
+    void OnMouseDown()
+    {
         if(buildable){
 
             GameObject turretToBuild = manager.instance.getToBuild();
@@ -38,7 +41,7 @@ public class ground_case : MonoBehaviour
             }
             else
             {
-                Debug.Log("you are too poor");
+                StartCoroutine(hess());
             }
 
         }
@@ -50,9 +53,12 @@ public class ground_case : MonoBehaviour
         GetComponent<Renderer>().material.color = base_color;
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator hess()
     {
-        
+
+        manager.instance.hess.enabled = true;
+        yield return new WaitForSeconds(1f);
+        manager.instance.hess.enabled = false;
     }
+
 }
