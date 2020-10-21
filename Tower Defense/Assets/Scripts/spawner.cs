@@ -6,9 +6,10 @@ public class spawner : MonoBehaviour
 {
     public Transform prefab;
     public Transform spawn;
+    int wavenumber = 0;
 
     private float countdown = 2f;
-    public float waverest = 10f;
+    public float waverest = 5f;
     // Update is called once per frame
 
     void Update(){
@@ -24,7 +25,9 @@ public class spawner : MonoBehaviour
         for (int i = 0; i < 1; i++)
         {
             Instantiate(prefab, new Vector3(1, 1, 1), spawn.rotation);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(2f);
         }
+        wavenumber++;
+        Debug.Log(wavenumber);
     }
 }

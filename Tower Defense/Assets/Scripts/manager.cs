@@ -11,6 +11,7 @@ public class manager : MonoBehaviour
     private Text lives_text;
     private int lives;
 
+    public bool game_lost;
     void Awake()
     {
         instance = this;
@@ -46,8 +47,9 @@ public class manager : MonoBehaviour
         turretToBuild = turret1;
         stonks_text = GameObject.Find("stonks").GetComponent<Text>();
         stonks_text.text = stonks.ToString();
-        lives_text = GameObject.Find("Text").GetComponent<Text>();
+        lives_text = GameObject.Find("lives").GetComponent<Text>();
         lives_text.text = lives.ToString();
+        game_lost = false;
     }
 
     public void gainStonks(int butin)
@@ -65,6 +67,9 @@ public class manager : MonoBehaviour
     public void oneHome()
     {
         lives--;
+        lives_text.text = lives.ToString();
+        if (lives >= 0) game_lost = true;
+
     }
 
 }
