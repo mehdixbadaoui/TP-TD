@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\bullet.cs" />
     <Compile Include="Assets\Scripts\drahemrbk.cs" />
     <Compile Include="Assets\Scripts\enemy.cs" />
+    <Compile Include="Assets\Scripts\flaming.cs" />
     <Compile Include="Assets\Scripts\followpath.cs" />
     <Compile Include="Assets\Scripts\ground_case.cs" />
     <Compile Include="Assets\Scripts\manager.cs" />

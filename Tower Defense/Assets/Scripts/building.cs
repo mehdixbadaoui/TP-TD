@@ -12,6 +12,7 @@ public class building : MonoBehaviour
     
     public GameObject turret1;
     public GameObject turret2;
+    public GameObject turret3;
 
     private GameObject turretToBuild;
 

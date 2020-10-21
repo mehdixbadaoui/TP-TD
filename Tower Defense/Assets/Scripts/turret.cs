@@ -11,6 +11,8 @@ public class turret : MonoBehaviour
     public float turnSpeed = 10f;
     public float rate = 2f;
 
+    private int cost = 200;
+
     private float countdown = 0f;
     public Transform toRotate;
 
@@ -78,6 +80,11 @@ public class turret : MonoBehaviour
         bullet b = bulletGO.GetComponent<bullet>();
         if (b) b.findTarget(target);
 
+    }
+
+    public int getCost()
+    {
+        return cost;
     }
 
     void OnDrawGizmosSelected()

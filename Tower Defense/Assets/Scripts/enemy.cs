@@ -43,6 +43,8 @@ public class enemy : MonoBehaviour
 
         if (close_turrets.Count != 0) setSpeed(base_speed / (2 * close_turrets.Count));
         else setSpeed(base_speed);
+
+        if (gameObject.transform.position == new Vector3(14.5f, 1, 1)) manager.instance.oneHome();
     }
 
     public void takeDamage(float d){
@@ -58,10 +60,6 @@ public class enemy : MonoBehaviour
         current_speed = s;
     }
 
-    public float getBaseSpeed()
-    {
-        return base_speed;
-    }
 
     public float getCurrentSpeed()
     {
@@ -69,10 +67,6 @@ public class enemy : MonoBehaviour
     }
 
     
-    public void incSlowEffect()
-    {
-        sloweffect++;
-    }
      
     public int getSlowEffect()
     {

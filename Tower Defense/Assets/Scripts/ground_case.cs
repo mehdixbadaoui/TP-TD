@@ -29,8 +29,17 @@ public class ground_case : MonoBehaviour
         if(buildable){
 
             GameObject turretToBuild = manager.instance.getToBuild();
-            turret = (GameObject)Instantiate(turretToBuild, transform.position + new Vector3(0, 1, 0), transform.rotation);
-            buildable = false;
+            if (manager.instance.getStonks() - manager.instance.buildCost(turretToBuild) > 0)
+            {
+                turret = (GameObject)Instantiate(turretToBuild, transform.position + new Vector3(0, 1, 0), transform.rotation);
+                manager.instance.gainStonks(manager.instance.buildCost(turretToBuild) * -1);
+                buildable = false;
+
+            }
+            else
+            {
+                Debug.Log("you are too poor");
+            }
 
         }
         

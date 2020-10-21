@@ -8,6 +8,8 @@ public class manager : MonoBehaviour
     public static manager instance;
     private static int stonks;
     private Text stonks_text;
+    private Text lives_text;
+    private int lives;
 
     void Awake()
     {
@@ -25,6 +27,13 @@ public class manager : MonoBehaviour
 
         return turretToBuild;
     }
+    public int buildCost(GameObject turret)
+    {
+        if (turret == turret1) return 200;
+        if (turret == turret2) return 400;
+        if (turret == turret3) return 500;
+        else return 0;
+    }
 
     public void setToBuild(GameObject t)
     {
@@ -33,16 +42,14 @@ public class manager : MonoBehaviour
     void Start()
     {
         stonks = 500;
+        lives = 10;
         turretToBuild = turret1;
         stonks_text = GameObject.Find("stonks").GetComponent<Text>();
         stonks_text.text = stonks.ToString();
+        lives_text = GameObject.Find("Text").GetComponent<Text>();
+        lives_text.text = lives.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void gainStonks(int butin)
     {
         stonks += butin;
@@ -50,8 +57,14 @@ public class manager : MonoBehaviour
 
     }
 
-    private void updateStonks()
+    public int getStonks()
     {
-
+        return stonks;
     }
+
+    public void oneHome()
+    {
+        lives--;
+    }
+
 }
