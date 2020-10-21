@@ -29,6 +29,8 @@ public class followpath : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            manager.instance.oneHome();
+
         }
         // Debug.Log(next);
 
